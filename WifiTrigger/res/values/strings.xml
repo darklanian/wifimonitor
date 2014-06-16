@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WifiTrigger</string>
+    <string name="action_update">Update</string>
+    <string name="state_not_connected">Not connected</string>
+    <string name="name_noname">----------</string>
+    <string name="state_connected">Connected</string>
+    <string-array name="ap_state">
+        <item >disappears</item>
+        <item >appears</item>
+    </string-array>
+    <string name="button_done">Done</string>
+    <string name="hint_trigger_name">Trigger name</string>
+    <string name="hint_ssid">SSID</string>
+    <string name="action_new_trigger">New</string>
+    <string name="action_cancel_edit_trigger">Cancel</string>
+	<string name="action_done_edit_trigger">Done</string>
+	<string name="toast_error_trigger_name_is_empty">Trigger name is empty</string>
+	<string name="toast_error_ssid_is_empty">SSID is empty</string>
+	<string name="action_delete_trigger">Delete</string>
+	<string name="dialog_title_delete_trigger">Delete trigger</string>
+	<string name="dialog_message_delete_trigger">Are you sure?</string>
+	<string name="dialog_button_yes">Yes</string>
+	<string name="dialog_button_no">No</string>
+	
+</resources>
