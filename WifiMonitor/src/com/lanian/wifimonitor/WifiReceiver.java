@@ -23,13 +23,21 @@ public class WifiReceiver extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
+		WifiManager wm = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
+		
+		if (!intent.getAction().equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)) {
+			if (wm.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
+				wm.startScan();
+			}
+			return;
+		}
+		
 		Log.d(TAG, "scan completed");
 		Cursor cursor = context.getContentResolver().query(TriggerProvider.WATCHING_SSIDS_URI, null, null, null, null);
 		if (cursor.getCount() == 0) {
 			Log.d(TAG, "there is no watching SSID");
 			return;
 		}
-			
 		
 		cursor.moveToFirst();
 		ArrayList<String> ssidsWatching = new ArrayList<String>();
@@ -41,17 +49,15 @@ public class WifiReceiver extends BroadcastReceiver {
 		for (String ssid : ssidsWatching)
 			Log.d(TAG, "watching: "+ssid);
 		
-		WifiManager wm = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
-		List<ScanResult> results = wm.getScanResults();
-		
 		HashSet<String> ssids = new HashSet<String>();
+		
+		List<ScanResult> results = wm.getScanResults();
 		for (ScanResult sr : results) {
 			if (!sr.SSID.isEmpty() && ssidsWatching.contains(sr.SSID)) {
 				ssids.add(sr.SSID);
-					
 			}
 		}
-		
+	
 		for (String ssid : ssids)
 			Log.d(TAG, "around here: "+ssid);
 		
@@ -75,10 +81,6 @@ public class WifiReceiver extends BroadcastReceiver {
 				appeared.add(ssid);
 		}
 		
-		
-		/*Bundle data = new Bundle();
-		data.putStringArrayList("disappeared", disappeared);
-		data.putStringArrayList("appeared", appeared);*/
 		for (String ssid : appeared) {
 			Log.d(TAG, "appeared: "+ssid);
 		}
