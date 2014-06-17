@@ -88,7 +88,7 @@ public class WifiReceiver extends BroadcastReceiver {
 		}
 		
 		if (!appeared.isEmpty() || !disappeared.isEmpty()) {
-			((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(2000);
+			((Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(500);
 		}
 	}
 

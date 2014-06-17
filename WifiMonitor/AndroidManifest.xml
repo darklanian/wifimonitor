@@ -28,6 +28,7 @@
         <receiver android:name="WifiReceiver">
             <intent-filter>
                 <action android:name="android.net.wifi.SCAN_RESULTS"/>
+                <action android:name="android.net.wifi.STATE_CHANGE"/>
             </intent-filter>
         </receiver>
         <provider android:authorities="TriggerProviderAuthorities" android:name="TriggerProvider"></provider>
