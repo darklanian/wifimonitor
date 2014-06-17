@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">WifiTrigger</string>
+    <string name="app_name">WifiMonitor</string>
     <string name="action_update">Update</string>
     <string name="state_not_connected">Not connected</string>
     <string name="name_noname">----------</string>
